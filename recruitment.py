@@ -80,7 +80,8 @@ def check_acceptance(cv, desired_skill):
     X = cv["age"]>25
     Y = cv["age"]<40
     Z = cv["experience"]>3
-    if X and Y and Z:
+    H = desired_skill in cv["skills"]
+    if X and Y and Z and H:
         return True
     else:
         return False
@@ -91,6 +92,12 @@ def main():
     # desired outcome
     print("Welcome to the special recruitment program, please answer the following questions: ")
     skills = get_skills()
+    user_cv = get_user_skills(skills)
+    is_accepted = check_acceptance(user_cv, "Roasting")
+    if is_accepted:
+        print(f"You've been accepted, {user_cv['name']}!")
+    else:
+        print("You've been rejected!")
     
 
 
