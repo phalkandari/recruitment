@@ -32,13 +32,8 @@ def get_user_skills(skills):
     show_skills(skills)
     skill_1 = int(input("Enter the number of a skill you know: "))
     skill_2 = int(input("Enter the number of another skill you know: "))
-    skill_1 = skills[skill_1 - 1]
-    skill_2 = skills[skill_2 -1]
-    user_skills = [skill_1, skill_2]
+    user_skills = [skills[skill_1 -1], skills[skill_2 -1]]
     return user_skills
-
-    #OR
-    # user_skills = [skills[skill_1 - 1], skills[skill_2 -1]]
 
 
     # chosen_number_1 = input ("Choose a skill from above by entering its number: ")
@@ -76,8 +71,8 @@ def get_user_cv(skills):
     """get the user's cv from their inputs"""
     cv = {}
     cv ["name"] = input ("What's your name? ")
-    cv ["age"] = input ("How old are you? ")
-    cv ["experience"] = input ("How many years of experience do you have? ")
+    cv ["age"] = int(input ("How old are you? "))
+    cv ["experience"] = int(input ("How many years of experience do you have? "))
     cv ["skills"] = get_user_skills(skills)
     return cv
 
@@ -100,10 +95,9 @@ def main():
     if is_accepted:
         print(f"You've been accepted, {user_cv['name']}!")
     else:
-        print("You've been rejected!")
+        print("Sorry, you've been rejected!")
     
 
 
 if __name__ == "__main__":
     main()
-    
