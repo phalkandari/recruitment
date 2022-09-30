@@ -14,7 +14,7 @@ def show_skills(skills):
     print ("Skills: ")
     skillsA = get_skills()
     for number, skill in enumerate(skillsA, start=1):
-        print(number, skill)
+        print(f"{number}. {skill}")
 
 
 # Shows the available skills and have user pick from them two skills
@@ -23,13 +23,24 @@ def show_skills(skills):
 # Return a list of the two skills that the user inputted
 def get_user_skills(skills):
     """Return a list of the two skills that the user inputted"""
-    new_user_list = []
-    skillsC = get_skills()
-    chosen_number_1 = int(input ("Choose a skill from above by entering its number: "))
-    chosen_number_2 = int(input ("Choose another skill from above by entering its number: "))
-    new_user_list.append(skillsC[chosen_number_1 -1])
-    new_user_list.append(skillsC[chosen_number_2 -1])
-    return new_user_list
+    # new_user_list = []
+    # skillsC = get_skills()
+    # chosen_number_1 = int(input ("Choose a skill from above by entering its number: "))
+    # chosen_number_2 = int(input ("Choose another skill from above by entering its number: "))
+    # new_user_list.append(skillsC[chosen_number_1 -1])
+    # new_user_list.append(skillsC[chosen_number_2 -1])
+    # return new_user_list
+    show_skills(skills)
+    skill_1 = int(input("Enter the number of a skill you know: "))
+    skill_2 = int(input("Enter the number of another skill you know: "))
+    skill_1 = skills[skill_1 - 1]
+    skill_2 = skills[skill_2 -1]
+    user_skills = [skill_1, skill_2]
+    print(user_skills)
+    return user_skills
+
+    #OR
+    # user_skills = [skills[skill_1 - 1], skills[skill_2 -1]]
 
 
     # chosen_number_1 = input ("Choose a skill from above by entering its number: ")
@@ -65,27 +76,30 @@ def get_user_skills(skills):
 # HINT: Use previous built functions to get the skills from the user
 def get_user_cv(skills):
     """get the user's cv from their inputs"""
-    cv = {
-        "skills": get_user_skills(get_skills())
-    }
+    cv = {}
     cv ["name"] = input ("What's your name? ")
     cv ["age"] = input ("How old are you? ")
     cv ["experience"] = input ("How many years of experience do you have? ")
+    cv ["skills"] = get_user_skills[skills]
     return cv
 
 
 # This functions checks if the cv is acceptable or not, by checking the age,
 # experience and skills and return a boolean (True or False) based on that
 def check_acceptance(cv, desired_skill):
-    X = cv["age"]>25
-    Y = cv["age"]<40
-    Z = cv["experience"]>3
-    H = desired_skill in cv["skills"]
-    if X and Y and Z and H:
+    # X = cv["age"]>25
+    # Y = cv["age"]<40
+    # Z = cv["experience"]>3
+    # H = desired_skill in cv["skills"]
+    # if X and Y and Z and H:
+    #     return True
+    # else:
+    #     return False
+
+    if 25 <= cv["age"] <= 40 and cv["experience"] > 3 and desired_skill in cv["skills"]:
         return True
     else:
         return False
-
 
 def main():
     # Write your main logic here by combining the functions above into the
