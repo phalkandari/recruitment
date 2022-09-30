@@ -3,7 +3,7 @@
 # Add at least 3 random skills for the user to select from
 def get_skills():
     """returns a list of assigned skills"""
-    return ["cooking", "baking", "grilling", "roasting"]
+    return ["Cooking", "Baking", "Grilling", "Roasting"]
 
 
 # This function pretty prints the skills to the user
@@ -12,9 +12,8 @@ def get_skills():
 def show_skills(skills):
     """prints skills_list numbered to user"""
     print ("Skills: ")
-    skillsA = get_skills()
-    for number, skill in enumerate(skillsA, start=1):
-        print(f"{number}. {skill}")
+    for index, skill in enumerate(skills, 1):
+        print(f"{index}. {skill}")
 
 
 # Shows the available skills and have user pick from them two skills
@@ -36,7 +35,6 @@ def get_user_skills(skills):
     skill_1 = skills[skill_1 - 1]
     skill_2 = skills[skill_2 -1]
     user_skills = [skill_1, skill_2]
-    print(user_skills)
     return user_skills
 
     #OR
@@ -80,23 +78,14 @@ def get_user_cv(skills):
     cv ["name"] = input ("What's your name? ")
     cv ["age"] = input ("How old are you? ")
     cv ["experience"] = input ("How many years of experience do you have? ")
-    cv ["skills"] = get_user_skills[skills]
+    cv ["skills"] = get_user_skills(skills)
     return cv
 
 
 # This functions checks if the cv is acceptable or not, by checking the age,
 # experience and skills and return a boolean (True or False) based on that
 def check_acceptance(cv, desired_skill):
-    # X = cv["age"]>25
-    # Y = cv["age"]<40
-    # Z = cv["experience"]>3
-    # H = desired_skill in cv["skills"]
-    # if X and Y and Z and H:
-    #     return True
-    # else:
-    #     return False
-
-    if 25 <= cv["age"] <= 40 and cv["experience"] > 3 and desired_skill in cv["skills"]:
+    if 25 <= cv ["age"] <= 40 and cv ["experience"] > 3 and desired_skill in cv ["skills"]:
         return True
     else:
         return False
@@ -106,7 +95,7 @@ def main():
     # desired outcome
     print("Welcome to the special recruitment program, please answer the following questions: ")
     skills = get_skills()
-    user_cv = get_user_skills(skills)
+    user_cv = get_user_cv(skills)
     is_accepted = check_acceptance(user_cv, "Roasting")
     if is_accepted:
         print(f"You've been accepted, {user_cv['name']}!")
@@ -117,3 +106,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    
